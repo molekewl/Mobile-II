@@ -1,5 +1,13 @@
 import React from 'react';
-import { Text, View, TextInput, StyleSheet, Button, TouchableHighlight, AsyncStorage } from 'react-native';
+import {
+  Text,
+  View,
+  TextInput,
+  StyleSheet,
+  Button,
+  TouchableHighlight,
+  AsyncStorage }
+  from 'react-native';
 
 const ACCESS_TOKEN = 'access_token';
 
@@ -18,8 +26,7 @@ export default class SignIn extends React.Component {
   }
 
   async storeToken(accessToken) {
-    try {
-      AsyncStorage.setItem('token', response.data.token).then(() => {
+    try { AsyncStorage.setItem('token', response.data.token).then(() => {
         // this.props.navigate('Content'); *Dont Need Calling it line 67
       })
     } catch (error) {
@@ -38,6 +45,7 @@ export default class SignIn extends React.Component {
           // Update state in here
         });
       });
+
       console.log("Token is: " + token)
     } catch (error) {
       console.log("Something went wrong")

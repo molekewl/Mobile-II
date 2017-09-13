@@ -9,7 +9,7 @@ import {
   AsyncStorage }
   from 'react-native';
 
-const ACCESS_TOKEN = 'access_token';
+// const ACCESS_TOKEN = 'access_token';
 
 export default class SignIn extends React.Component {
   constructor(props) {

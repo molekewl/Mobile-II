@@ -20,27 +20,13 @@ export default class SignIn extends React.Component {
 
   async storeToken(accessToken) {
     try {
-      // let response = await AsyncStorage.getItem('token').then((token) => { // retrieve the token from "localStorage"
-      //   axios.get('https://mobile-server-ii.herokuapp.com/users', {
-      //     headers: {
-      //       authorization: token, // attach the token as a header
-      //     }
-      //   }).then((response) => {
-      //     // Update state in here
-      //     // this.getToken()
-      //     email: this.state.email
-      //     password: this.state.password
-      //     console.log(response);
-      //   });  
-      // });
-
       AsyncStorage.setItem('token', response.data.token).then(() => {
-        this.props.navigate('Content');
+        // this.props.navigate('Content');
       });
-      // await AsyncStorage.setItem(ACCESS_TOKEN, accessToken);
+      await AsyncStorage.setItem(ACCESS_TOKEN, accessToken);
 
       // invoke getToken to check that it works
-      // this.getToken();
+      this.getToken();
     } catch (error) {
       console.log('Something went wrong')
     }

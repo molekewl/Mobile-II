@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, TextInput, StyleSheet, Button, TouchableHighlight, AsyncStorage } from 'react-native';
+// import Content from './Content';
 
 const ACCESS_TOKEN = 'access_token';
 
@@ -19,9 +20,27 @@ export default class SignIn extends React.Component {
 
   async storeToken(accessToken) {
     try {
+      // let response = await AsyncStorage.getItem('token').then((token) => { // retrieve the token from "localStorage"
+      //   axios.get('https://mobile-server-ii.herokuapp.com/users', {
+      //     headers: {
+      //       authorization: token, // attach the token as a header
+      //     }
+      //   }).then((response) => {
+      //     // Update state in here
+      //     // this.getToken()
+      //     email: this.state.email
+      //     password: this.state.password
+      //     console.log(response);
+      //   });  
+      // });
+
       AsyncStorage.setItem('token', response.data.token).then(() => {
-        // this.props.navigate('Content'); *Dont Need Calling it line 67
-      })
+        this.props.navigate('Content');
+      });
+      // await AsyncStorage.setItem(ACCESS_TOKEN, accessToken);
+
+      // invoke getToken to check that it works
+      // this.getToken();
     } catch (error) {
       console.log('Something went wrong')
     }
@@ -30,14 +49,15 @@ export default class SignIn extends React.Component {
   async getToken(accessToken) {
     try {
       AsyncStorage.getItem('token').then((token) => { // retrieve the token from "localStorage"
-        axios.get('https://mobile-server-ii.herokuapp.com/users', {
-          headers: {
-            authorization: token, // attach the token as a header
-          }
-        }).then((response) => {
-          // Update state in here
-        });
+      axios.get('https://mobile-server-ii.herokuapp.com/users', {
+        headers: {
+          authorization: token, // attach the token as a header
+        }
+      }).then((response) => {
+        // Update state in here
       });
+    });
+      // let token = await AsyncStorage.getItem(ACCESS_TOKEN);
       console.log("Token is: " + token)
     } catch (error) {
       console.log("Something went wrong")
